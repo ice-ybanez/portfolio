@@ -1,47 +1,5 @@
 import "./index.css";
-
-type Project = {
-  title: string;
-  category: string;
-  description: string;
-  tech: string[];
-  status: string;
-};
-
-const projects: Project[] = [
-  {
-    title: "GreenGym Online",
-    category: "Internship / Full-Stack Development",
-    description:
-      "Worked on user and admin-facing React/TypeScript features for a fitness platform, including profile pages, nutrition tracking, workout pages, body composition history, and responsive UI improvements.",
-    tech: ["React", "TypeScript", "CSS Modules", "Docker", "API Integration"],
-    status: "Placement Project",
-  },
-  {
-    title: "Java MVC Store Application",
-    category: "University Project",
-    description:
-      "Built a JavaFX store management system using MVC architecture, customer and product management, serialization, JDBC database connectivity, DAO pattern, and builder pattern.",
-    tech: ["Java", "JavaFX", "MVC", "JDBC", "Serialization"],
-    status: "Coursework",
-  },
-  {
-    title: "Hungry Monkey",
-    category: "C Programming Project",
-    description:
-      "Developed movement logic for a matrix-based game where a monkey collects falling treats. Focused on state handling, grid parsing, decision-making, and algorithmic movement.",
-    tech: ["C", "Algorithms", "Matrix Logic", "Game Logic"],
-    status: "Coursework",
-  },
-  {
-    title: "NoSQL Database Architecture Projects",
-    category: "Database Systems",
-    description:
-      "Completed projects covering relational design, denormalisation, MongoDB document modelling, replication, sharding, Neo4j queries, and polyglot persistence.",
-    tech: ["MongoDB", "Neo4j", "SQL", "Replication", "Sharding"],
-    status: "University Module",
-  },
-];
+import { projects } from "./data/projects";
 
 const skills = [
   "React",
@@ -149,18 +107,52 @@ function App() {
         <div className="projectsGrid">
           {projects.map((project) => (
             <article key={project.title} className="projectCard">
-              <div className="projectTop">
-                <p className="projectCategory">{project.category}</p>
-                <span>{project.status}</span>
+              <div className="projectImageWrap">
+                {project.image ? (
+                  <img
+                  src={project.image}
+                  alt={`${project.title} preview`}
+                  className="projectImage"
+                  onError={(event) => {
+                    event.currentTarget.style.display = "none";
+                    event.currentTarget.parentElement?.classList.add("imageMissing");
+                  }}
+                />
+                ) : (
+                  <div className="projectImagePlaceholder">
+                    <span>{project.title}</span>
+                  </div>
+                )}
               </div>
 
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
+              <div className="projectContent">
+                <div className="projectTop">
+                  <p className="projectCategory">{project.category}</p>
+                  <span>{project.status}</span>
+                </div>
 
-              <div className="techList">
-                {project.tech.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+
+                <div className="techList">
+                  {project.tech.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+
+                <div className="projectActions">
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noreferrer">
+                      GitHub
+                    </a>
+                  )}
+
+                  {project.demo && (
+                    <a href={project.demo} target="_blank" rel="noreferrer">
+                      Live Demo
+                    </a>
+                  )}
+                </div>
               </div>
             </article>
           ))}
@@ -199,14 +191,14 @@ function App() {
 
         <div className="contactLinks">
           <a href="mailto:935ybanez@gmail.com">Email Me</a>
-          <a href="https://github.com/ice-ybanez" target="_blank">
+          <a href="https://github.com/ice-ybanez" target="_blank" rel="noreferrer">
             GitHub
           </a>
-          <a href="https://www.linkedin.com/in/ice-ybanez" target="_blank">
+          <a href="https://www.linkedin.com/in/ice-ybanez" target="_blank" rel="noreferrer">
             LinkedIn
           </a>
 
-          <a href="/CV Ice Ybanez.pdf" target="_blank">
+          <a href="/Ice-Ybanez-CV.pdf" target="_blank" rel="noreferrer">
             View CV
           </a>
         </div>

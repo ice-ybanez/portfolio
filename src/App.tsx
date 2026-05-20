@@ -1,3 +1,4 @@
+import type { MouseEvent } from "react";
 import "./index.css";
 import { projects } from "./data/projects";
 
@@ -18,6 +19,44 @@ const skills = [
   "CSS",
 ];
 
+const scrollToSection = (targetId: string) => {
+  const target = document.getElementById(targetId);
+
+  if (!target) return;
+
+  const startPosition = window.scrollY;
+  const targetPosition = target.getBoundingClientRect().top + window.scrollY - 24;
+  const distance = targetPosition - startPosition;
+  const duration = 900;
+  const startTime = performance.now();
+
+  const easeInOutCubic = (time: number) =>
+    time < 0.5 ? 4 * time * time * time : 1 - Math.pow(-2 * time + 2, 3) / 2;
+
+  const animation = (currentTime: number) => {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easedProgress = easeInOutCubic(progress);
+
+    window.scrollTo(0, startPosition + distance * easedProgress);
+
+    if (progress < 1) {
+      requestAnimationFrame(animation);
+    }
+  };
+
+  requestAnimationFrame(animation);
+};
+
+const handleNavClick = (
+  event: MouseEvent<HTMLAnchorElement>,
+  targetId: string
+) => {
+  event.preventDefault();
+  scrollToSection(targetId);
+  window.history.pushState(null, "", `#${targetId}`);
+};
+
 function App() {
   return (
     <main className="page">
@@ -25,41 +64,78 @@ function App() {
         <div className="logo">Ice.dev</div>
 
         <div className="navLinks">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#experience">Experience</a>
-          <a href="#contact">Contact</a>
+          <a href="#about" onClick={(event) => handleNavClick(event, "about")}>
+            About
+          </a>
+          <a href="#projects" onClick={(event) => handleNavClick(event, "projects")}>
+            Projects
+          </a>
+          <a
+            href="#experience"
+            onClick={(event) => handleNavClick(event, "experience")}
+          >
+            Experience
+          </a>
+          <a href="#contact" onClick={(event) => handleNavClick(event, "contact")}>
+            Contact
+          </a>
         </div>
       </nav>
 
       <section className="hero">
-        <p className="eyebrow">Software Development Student</p>
+        <div className="heroIntro">
+          <div className="portraitCard">
+            <div className="portraitGlow" />
+            <img
+              src="/profile.jpg"
+              alt="Ice Ybanez portrait"
+              className="profilePortrait"
+              onError={(event) => {
+                event.currentTarget.style.display = "none";
+                event.currentTarget.parentElement?.classList.add("portraitMissing");
+              }}
+            />
+            <span className="portraitFallback">Ice</span>
+          </div>
 
-        <h1>
-          Hi, I’m Ice. I build clean, practical software with a focus on
-          frontend and full-stack development.
-        </h1>
+          <div className="heroCopy">
+            <p className="eyebrow">Software Development Student</p>
 
-        <p className="heroText">
-          I’m a Software Development student at MTU with experience building
-          React/TypeScript interfaces, Java applications, database systems, and
-          full-stack university projects.
-        </p>
+            <h1>Ice Ybanez</h1>
 
-        <div className="heroActions">
-          <a className="primaryButton" href="#projects">
-            View Projects
-          </a>
-          <a className="secondaryButton" href="#contact">
-            Contact Me
-          </a>
+            <p className="heroRole">
+              Frontend & Full-Stack Developer
+            </p>
+
+            <p className="heroText">
+              I build clean, practical software using React, TypeScript, Java,
+              databases, and modern development tools.
+            </p>
+
+            <div className="heroActions">
+              <a
+                className="primaryButton"
+                href="#projects"
+                onClick={(event) => handleNavClick(event, "projects")}
+              >
+                View Projects
+              </a>
+              <a
+                className="secondaryButton"
+                href="#contact"
+                onClick={(event) => handleNavClick(event, "contact")}
+              >
+                Contact Me
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
       <section id="about" className="section twoColumn">
         <div>
           <p className="sectionLabel">About</p>
-          <h2>Developer focused on useful, polished applications.</h2>
+          <h2>Always will be a student.</h2>
         </div>
 
         <div className="card">

@@ -3,20 +3,26 @@ import "./index.css";
 import { projects } from "./data/projects";
 
 const skills = [
-  "React",
-  "TypeScript",
-  "JavaScript",
+  "C",
+  "Confluence",
+  "CSS",
+  "Docker",
+  "Firebase",
+  "Git",
+  "Go",
   "Java",
   "JavaFX",
-  "SQL",
+  "JavaScript",
+  "Jira",
+  "Kotlin",
   "MongoDB",
-  "Firebase",
-  "Docker",
-  "Git",
   "Python",
-  "C",
-  "Go",
-  "CSS",
+  "R Studio",
+  "React",
+  "SQL",
+  "TypeScript",
+  "Visual Paradigm",
+  "WordPress",
 ];
 
 const scrollToSection = (targetId: string) => {
@@ -104,12 +110,12 @@ function App() {
             <h1>Ice Ybanez</h1>
 
             <p className="heroRole">
-              Frontend & Full-Stack Developer
+              Full-Stack Developer
             </p>
 
             <p className="heroText">
               I build clean, practical software using React, TypeScript, Java,
-              databases, and modern development tools.
+              databases and modern development tools.
             </p>
 
             <div className="heroActions">
@@ -135,21 +141,20 @@ function App() {
       <section id="about" className="section twoColumn">
         <div>
           <p className="sectionLabel">About</p>
-          <h2>Always will be a student.</h2>
+          <h2>Am a student, always will be a student.</h2>
         </div>
 
         <div className="card">
           <p>
-            I’m currently studying Software Development at Munster Technological
-            University. I enjoy creating practical software that solves real
-            problems, especially projects involving frontend development,
-            full-stack systems, databases, and clean user interfaces.
+            I'm currently studying Software Development at MTU. 
+            I enjoy creating software that I (and potentially others) can use, especially projects involving frontend development,
+            full-stack systems, databases and clean user interfaces.
           </p>
 
           <p>
-            Through my GreenGym placement and university projects, I’ve worked
-            with React, TypeScript, Java, SQL, MongoDB, Docker, and Git. I like
-            building features step by step, improving UI/UX, and making systems
+            Through my placement at GreenGym and college projects, I've worked
+            with React, TypeScript, Java, SQL, MongoDB, Docker and Git. I like
+            building features step by step, improving UI/UX and making systems
             easier to use.
           </p>
         </div>
@@ -176,7 +181,7 @@ function App() {
           </div>
 
           <p className="sectionHint">
-            A selection of internship and university projects.
+            Selection of internship and college projects.
           </p>
         </div>
 
@@ -243,14 +248,14 @@ function App() {
 
         <div className="card experienceCard">
           <div>
-            <h3>GreenGym Online</h3>
+            <h3>GreenGym</h3>
             <p className="muted">Full Stack Software Developer Intern</p>
           </div>
 
           <p>
-            Worked on frontend and full-stack tasks for a fitness platform,
-            focusing on React/TypeScript UI development, responsive layouts,
-            profile management, nutrition tracking, workout page improvements,
+            Worked on both frontend and backend tasks for a fitness platform,
+            focusing on React/TypeScript UI development, responsive layouts, auth, 
+            profile management, feature implementation
             and Docker-based testing/development workflows.
           </p>
         </div>
@@ -258,11 +263,10 @@ function App() {
 
       <section id="contact" className="section contactSection">
         <p className="sectionLabel">Contact</p>
-        <h2>Let’s connect</h2>
+        <h2>Let's connect!</h2>
 
         <p>
-          I’m open to software development opportunities, placement experience,
-          graduate roles, and project collaborations.
+          I'm open to software development opportunities, graduate roles and project collaborations.
         </p>
 
         <div className="contactLinks">

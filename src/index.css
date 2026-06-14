@@ -392,6 +392,105 @@ h3 {
   gap: 18px;
 }
 
+.pageTop {
+  padding-top: 120px;
+}
+
+.navLinks a.active {
+  color: #2ecc71;
+}
+
+.skillGroupsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 32px;
+}
+
+.skillGroupCard {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.045);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
+}
+
+.skillGroupCard p {
+  color: #cfcfcf;
+  line-height: 1.7;
+}
+
+.compactSkills {
+  margin-top: 20px;
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 22px;
+  margin-top: 32px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 132px;
+  top: 12px;
+  bottom: 12px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    rgba(46, 204, 113, 0.75),
+    rgba(255, 255, 255, 0.08)
+  );
+}
+
+.timelineItem {
+  position: relative;
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 44px;
+  align-items: start;
+}
+
+.timelineItem::before {
+  content: "";
+  position: absolute;
+  left: 124px;
+  top: 20px;
+  width: 17px;
+  height: 17px;
+  border-radius: 999px;
+  background: #2ecc71;
+  box-shadow: 0 0 0 8px rgba(46, 204, 113, 0.12);
+}
+
+.timelineYear {
+  color: #2ecc71;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding-top: 14px;
+}
+
+.timelineContent {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.045);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
+}
+
+.timelineContent p {
+  color: #cfcfcf;
+  line-height: 1.7;
+}
+
+.timelineSubtitle {
+  color: #2ecc71 !important;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
 .contactSection {
   text-align: center;
   max-width: 720px;
@@ -597,5 +696,62 @@ h3 {
   .modalClose {
     top: 14px;
     right: 14px;
+  }
+
+  .skillGroupsGrid {
+  grid-template-columns: 1fr;
+}
+
+.pageTop {
+  padding-top: 90px;
+}
+
+.timeline::before {
+  left: 8px;
+}
+
+.timelineItem {
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding-left: 34px;
+}
+
+.timelineItem::before {
+  left: 0;
+  top: 8px;
+}
+
+.timelineYear {
+  padding-top: 0;
+}
+
+.timelineContent,
+.skillGroupCard {
+  padding: 22px;
+  border-radius: 22px;
+}
+
+  .timeline::before {
+    left: 8px;
+  }
+
+  .timelineItem {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding-left: 34px;
+  }
+
+  .timelineItem::before {
+    left: 0;
+    top: 8px;
+  }
+
+  .timelineYear {
+    padding-top: 0;
+  }
+
+  .timelineContent {
+    padding: 22px;
+    border-radius: 22px;
   }
 }

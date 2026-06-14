@@ -7,6 +7,10 @@ export type Project = {
   image?: string;
   github?: string;
   demo?: string;
+
+  role?: string;
+  features?: string[];
+  challenges?: string[];
 };
 
 export const projects: Project[] = [
@@ -18,6 +22,18 @@ export const projects: Project[] = [
     tech: ["React", "TypeScript", "CSS Modules", "Docker", "API Integration"],
     status: "Placement Project",
     image: "/projects/greengym.png",
+    role: "Frontend / Full-Stack Developer Intern",
+    features: [
+      "Improved user profile layouts and frontend-only editing flows",
+      "Worked on nutrition and workout summary UI improvements",
+      "Updated responsive layouts for desktop and mobile views",
+      "Helped align dummy frontend data with summary cards and page sections",
+    ],
+    challenges: [
+      "Keeping UI changes consistent across similar pages",
+      "Working safely with dummy/demo data while preparing for backend integration",
+      "Making supervisor feedback fit into the existing design system",
+    ],
   },
   {
     title: "Java MVC Store Application",

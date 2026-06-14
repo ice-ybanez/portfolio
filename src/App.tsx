@@ -1,6 +1,7 @@
 import type { MouseEvent } from "react";
+import { useState } from "react";
 import "./index.css";
-import { projects } from "./data/projects";
+import { projects, type Project } from "./data/projects";
 
 const skills = [
   "C",
@@ -64,6 +65,8 @@ const handleNavClick = (
 };
 
 function App() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <main className="page">
       <nav className="navbar">
@@ -114,7 +117,7 @@ function App() {
             </p>
 
             <p className="heroText">
-              I build clean, practical software using React, TypeScript, Java,
+              I like to build clean, practical software using React, TypeScript, Java,
               databases and modern development tools.
             </p>
 
@@ -222,6 +225,10 @@ function App() {
                 </div>
 
                 <div className="projectActions">
+                  <button type="button" onClick={() => setSelectedProject(project)}>
+                    View Case Study
+                  </button>
+
                   {project.github && (
                     <a href={project.github} target="_blank" rel="noreferrer">
                       GitHub
@@ -283,6 +290,80 @@ function App() {
           </a>
         </div>
       </section>
+
+      {selectedProject && (
+        <div
+          className="modalOverlay"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div
+            className="projectModal"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="modalClose"
+              onClick={() => setSelectedProject(null)}
+            >
+              ×
+            </button>
+
+            <p className="sectionLabel">{selectedProject.category}</p>
+            <h2>{selectedProject.title}</h2>
+
+            <p className="modalDescription">{selectedProject.description}</p>
+
+            {selectedProject.role && (
+              <div className="modalBlock">
+                <h3>My Role</h3>
+                <p>{selectedProject.role}</p>
+              </div>
+            )}
+
+            {selectedProject.features && (
+              <div className="modalBlock">
+                <h3>Main Features</h3>
+                <ul>
+                  {selectedProject.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {selectedProject.challenges && (
+              <div className="modalBlock">
+                <h3>Challenges Solved</h3>
+                <ul>
+                  {selectedProject.challenges.map((challenge) => (
+                    <li key={challenge}>{challenge}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <div className="techList modalTechList">
+              {selectedProject.tech.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+
+            <div className="projectActions modalActions">
+              {selectedProject.github && (
+                <a href={selectedProject.github} target="_blank" rel="noreferrer">
+                  GitHub
+                </a>
+              )}
+
+              {selectedProject.demo && (
+                <a href={selectedProject.demo} target="_blank" rel="noreferrer">
+                  Live Demo
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

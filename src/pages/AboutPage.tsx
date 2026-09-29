@@ -25,21 +25,32 @@ function AboutPage() {
           </div>
 
           <div className="heroCopy">
-            <p className="eyebrow">Software Development Student</p>
+            <p className="eyebrow">Software Developer · Ireland</p>
 
-            <h1>Ice Ybanez</h1>
+            <h1>Ice Ybañez</h1>
 
             <p className="heroRole">Frontend & Full-Stack Developer</p>
 
             <p className="heroText">
-              I build clean, practical software using React, TypeScript, Java,
-              databases, and modern development tools.
+              Final-year Software Development student at MTU with hands-on
+              experience building React and TypeScript features for a fitness
+              platform. I enjoy creating clean interfaces, practical full-stack
+              applications, and software that solves real problems.
             </p>
 
             <div className="heroActions">
               <Link className="primaryButton" to="/projects">
                 View Projects
               </Link>
+
+              <a
+                className="secondaryButton"
+                href="/Ice-Ybanez-CV.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View CV
+              </a>
 
               <Link className="secondaryButton" to="/contact">
                 Contact Me
@@ -52,21 +63,28 @@ function AboutPage() {
       <section className="section twoColumn">
         <div>
           <p className="sectionLabel">About</p>
-          <h2>Am a student, always will be a student.</h2>
+          <h2>Building practical software across web, mobile, and data.</h2>
         </div>
 
         <div className="card">
           <p>
-            I'm currently studying Software Development at MTU. 
-            I enjoy creating software that I (and potentially others) can use, especially projects involving frontend development,
-            full-stack systems, databases and clean user interfaces.
+            I&apos;m currently completing a BSc in Software Development at
+            Munster Technological University, with expected completion in May
+            2027.
           </p>
 
           <p>
-            Through my placement at GreenGym and college projects, I've worked
-            with React, TypeScript, Java, SQL, MongoDB, Docker and Git. I like
-            building features step by step, improving UI/UX and making systems
-            easier to use.
+            During my placement with GreenGym, I worked on user and admin-facing
+            features for a React and TypeScript fitness platform. After the
+            placement, I continued contributing on a frontend-focused retainer.
+          </p>
+
+          <p>
+            My university work has also covered Java, Kotlin, Python, Go,
+            relational and NoSQL databases, distributed systems, mobile
+            development, and software architecture. I like taking a feature
+            from an initial idea through implementation, testing, refinement,
+            and presentation.
           </p>
         </div>
       </section>
@@ -79,8 +97,8 @@ function AboutPage() {
           </div>
 
           <p className="sectionHint">
-            Grouped by the areas I’ve worked with through placement and
-            university projects.
+            Technologies I&apos;ve used through professional work, university
+            projects, and personal development.
           </p>
         </div>
 

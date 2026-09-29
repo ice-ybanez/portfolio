@@ -8,37 +8,37 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Frontend Development",
     description:
-      "Building responsive, clean user interfaces with a focus on usability and visual consistency.",
-    skills: ["React", "TypeScript", "JavaScript", "CSS Modules", "HTML", "CSS"],
+      "Building responsive interfaces with a focus on usability, consistency, and maintainable component-based code.",
+    skills: ["React", "TypeScript", "JavaScript", "HTML", "CSS", "CSS Modules", "Vite"],
   },
   {
-    title: "Full-Stack & Tools",
+    title: "Programming",
     description:
-      "Working with frontend features, development workflows, APIs, version control, and deployment tools.",
-    skills: ["Docker", "Git", "GitHub", "API Integration", "VS Code", "Vite"],
+      "Working across object-oriented, procedural, mobile, scripting, and distributed programming projects.",
+    skills: ["Java", "Python", "Kotlin", "Go", "C", "JavaFX"],
   },
   {
     title: "Data & Databases",
     description:
-      "Designing, querying, and modelling data across relational and NoSQL systems.",
-    skills: ["SQL", "MongoDB", "Neo4j", "Firebase", "Database Design"],
+      "Designing, querying, and modelling data across relational, document, graph, and mobile-backed systems.",
+    skills: ["SQL", "MongoDB", "Neo4j", "Firebase", "JDBC", "Database Design"],
   },
   {
-    title: "Mobile App Development",
+    title: "Development Tools",
     description:
-      "Creating mobile app interfaces and Firebase-backed features through university projects.",
+      "Using modern development tooling for source control, local environments, APIs, containers, and collaboration.",
+    skills: ["Git", "GitHub", "Docker", "API Integration", "VS Code", "IntelliJ", "PyCharm"],
+  },
+  {
+    title: "Mobile Development",
+    description:
+      "Creating Android interfaces and application features through university mobile-development projects.",
     skills: ["Kotlin", "Jetpack Compose", "Firebase", "Android Studio"],
   },
   {
-    title: "Programming & Problem Solving",
+    title: "Working Style",
     description:
-      "Building software using object-oriented, procedural, and algorithmic approaches.",
-    skills: ["Java", "JavaFX", "C", "Python", "Go", "Algorithms"],
-  },
-  {
-    title: "Soft Skills",
-    description:
-      "Skills developed through placement work, team projects, presentations, and supervisor feedback.",
+      "Skills developed through professional development work, team projects, presentations, and iterative feedback.",
     skills: [
       "Communication",
       "Teamwork",

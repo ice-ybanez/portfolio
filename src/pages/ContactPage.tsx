@@ -4,23 +4,25 @@ function ContactPage() {
       <section className="section contactSection pageTop">
         <p className="sectionLabel">Contact</p>
 
-        <h2>Get in touch</h2>
+        <h2>Let&apos;s build something useful.</h2>
 
         <p>
-          Thanks for visiting my portfolio. I’m open to software development
-          opportunities, placement experience, graduate roles, and project
-          collaborations.
+          I&apos;m interested in graduate and junior software development
+          opportunities, particularly frontend and full-stack roles.
         </p>
 
         <p>
-          The best way to reach me is by email, but you can also view my GitHub,
-          LinkedIn, or CV below.
+          You can contact me by email or view my GitHub, LinkedIn, and CV below.
         </p>
 
         <div className="contactLinks">
           <a href="mailto:935ybanez@gmail.com">Email Me</a>
 
-          <a href="https://github.com/ice-ybanez" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/ice-ybanez"
+            target="_blank"
+            rel="noreferrer"
+          >
             GitHub
           </a>
 

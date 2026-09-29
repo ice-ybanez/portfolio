@@ -138,6 +138,14 @@ const experience: Experience[] = [
       "Studying software development through practical modules covering web development, Java applications, databases, mobile development, algorithms, distributed systems, data analytics, machine learning and a two-semester final year project.",
     tags: ["Java", "Python", "Kotlin", "Go", "SQL", "MongoDB", "React"],
   },
+  {
+    period: "2021 - 2022",
+    title: "Computer Systems",
+    place: "Cork College of Commerce",
+    description:
+      "Studied Computer Systems before progressing to Software Development at Munster Technological University.",
+    tags: ["Computer Systems", "IT", "Technology"],
+  },
 ];
 
 const interests = [
@@ -405,17 +413,17 @@ function App() {
               </div>
             </div>
 
-            <div className="heroSide">
-              <article className="infoCard compactCard aboutCard">
-                <p className="cardLabel">About me</p>
-                <p>
-                  Final-year Software Development student at MTU with hands-on
-                  React and TypeScript experience. I enjoy building clean,
-                  practical software across frontend, full-stack, mobile and
-                  data-focused projects.
-                </p>
-              </article>
-            </div>
+            <div className="heroBalance" aria-hidden="true" />
+          </div>
+
+          <div className="sectionInner aboutIntro">
+            <p className="sectionLabel">About me</p>
+            <p className="aboutIntroText">
+              I'm a passionate software development final year student at MTU, Cork. <br></br>
+              I like playing around with tech in general and also have hands-on experience with React & Typescript.<br></br>
+              I enjoy the "what if" moments of programming so I test and experiment with new technologies.<br></br>
+              I also have a keen interest in fitness and health, which has led me to explore the intersection of technology and wellness.
+            </p>
           </div>
 
           <div className="sectionInner skillsBlock">
@@ -595,11 +603,6 @@ function App() {
                 <p className="sectionLabel">Experience</p>
                 <h2>Work & education</h2>
               </div>
-
-              <p>
-                Professional development experience alongside my Software
-                Development degree.
-              </p>
             </div>
 
             <div className="timeline">
@@ -673,7 +676,6 @@ function App() {
             Ice<span>.dev</span>
           </button>
 
-          <p>Built with React, TypeScript & Vite.</p>
         </div>
       </footer>
     </div>

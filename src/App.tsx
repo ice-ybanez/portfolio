@@ -189,6 +189,7 @@ function easeInOutCubic(progress: number) {
 function App() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const [typedName, setTypedName] = useState("");
+  const [cursorVisible, setCursorVisible] = useState(true);
 
   useEffect(() => {
     let characterIndex = 0;
@@ -203,6 +204,14 @@ function App() {
     }, NAME_TYPING_SPEED_MS);
 
     return () => window.clearInterval(typingTimer);
+  }, []);
+
+  useEffect(() => {
+    const cursorTimer = window.setInterval(() => {
+      setCursorVisible((visible) => !visible);
+    }, 480);
+
+    return () => window.clearInterval(cursorTimer);
   }, []);
 
   useEffect(() => {
@@ -361,7 +370,12 @@ function App() {
                 <span className="typingText" aria-hidden="true">
                   {typedName}
                 </span>
-                <span className="typingCursor" aria-hidden="true">
+                <span
+                  className={`typingCursor ${
+                    cursorVisible ? "cursorVisible" : "cursorHidden"
+                  }`}
+                  aria-hidden="true"
+                >
                   |
                 </span>
               </h1>

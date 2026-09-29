@@ -6,13 +6,18 @@ import "./index.css";
 
 type Theme = "light" | "dark";
 
+type ProjectGroup = "experience" | "development" | "projects";
+
 type Project = {
   title: string;
   category: string;
   description: string;
   tech: string[];
   github?: string;
+  liveUrl?: string;
+  liveLabel?: string;
   status: string;
+  group: ProjectGroup;
 };
 
 type Experience = {
@@ -26,7 +31,10 @@ type Experience = {
 // Adjustable animation timings.
 // Increase these numbers for slower effects and decrease them for faster effects.
 const THEME_FADE_DURATION_MS = 700;
-const SCROLL_DURATION_MS = 600;
+const SCROLL_DURATION_MS = 950;
+const NAME_TYPING_SPEED_MS = 105;
+const FULL_NAME = "Ice Ybañez";
+
 const projects: Project[] = [
   {
     title: "GreenGym Online",
@@ -35,6 +43,9 @@ const projects: Project[] = [
       "Contributed to user and admin-facing features for a fitness platform, focusing on React and TypeScript UI development, responsive layouts, workout and nutrition features, member tools, and ongoing frontend improvements.",
     tech: ["React", "TypeScript", "CSS Modules", "Docker", "API Integration", "Git"],
     status: "Professional Project",
+    group: "experience",
+    liveUrl: "https://greengym.online/",
+    liveLabel: "Visit GreenGym",
   },
   {
     title: "Workout Programme Recommendation System",
@@ -43,6 +54,7 @@ const projects: Project[] = [
       "A rule and constraint based system that generates weekly workout programme drafts from a member's goals, availability, equipment, experience and exercise preferences, while allowing a fitness professional to review and edit the result.",
     tech: ["React", "TypeScript", "Rule-Based Systems", "SQLite / JSON", "UX"],
     status: "In Development",
+    group: "development",
   },
   {
     title: "Distributed Spelling Bee Game",
@@ -53,6 +65,7 @@ const projects: Project[] = [
     github:
       "https://github.com/ice-ybanez/CV_Projects/tree/main/DSP%20-%20SpellingBeeGame/spellingbee",
     status: "University Project",
+    group: "projects",
   },
   {
     title: "Java MVC Store Application",
@@ -63,6 +76,7 @@ const projects: Project[] = [
     github:
       "https://github.com/ice-ybanez/CV_Projects/tree/main/OOP%20-%20Store%20Management%20GUI",
     status: "University Project",
+    group: "projects",
   },
   {
     title: "NoSQL Database Architecture",
@@ -72,6 +86,7 @@ const projects: Project[] = [
     tech: ["MongoDB", "Neo4j", "SQL", "Replication", "Sharding"],
     github: "https://github.com/ice-ybanez/CV_Projects/tree/main/NLDSA",
     status: "University Project",
+    group: "projects",
   },
   {
     title: "Hungry Monkey",
@@ -82,8 +97,21 @@ const projects: Project[] = [
     github:
       "https://github.com/ice-ybanez/CV_Projects/tree/main/C%20Programming%20-%20HungryMonkey",
     status: "University Project",
+    group: "projects",
   },
 ];
+
+const professionalProjects = projects.filter(
+  (project) => project.group === "experience"
+);
+
+const developmentProjects = projects.filter(
+  (project) => project.group === "development"
+);
+
+const universityProjects = projects.filter(
+  (project) => project.group === "projects"
+);
 
 const experience: Experience[] = [
   {
@@ -117,7 +145,6 @@ const interests = [
   "UI / UX",
   "Fitness Technology",
   "Photography",
-  "Custom Sneakers",
 ];
 
 const skills = [
@@ -161,6 +188,22 @@ function easeInOutCubic(progress: number) {
 
 function App() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [typedName, setTypedName] = useState("");
+
+  useEffect(() => {
+    let characterIndex = 0;
+
+    const typingTimer = window.setInterval(() => {
+      characterIndex += 1;
+      setTypedName(FULL_NAME.slice(0, characterIndex));
+
+      if (characterIndex >= FULL_NAME.length) {
+        window.clearInterval(typingTimer);
+      }
+    }, NAME_TYPING_SPEED_MS);
+
+    return () => window.clearInterval(typingTimer);
+  }, []);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -314,7 +357,14 @@ function App() {
 
             <div className="heroIdentity">
               <p className="eyebrow">Hello, I&apos;m</p>
-              <h1>Ice Ybañez</h1>
+              <h1 className="typingName" aria-label={FULL_NAME}>
+                <span className="typingText" aria-hidden="true">
+                  {typedName}
+                </span>
+                <span className="typingCursor" aria-hidden="true">
+                  |
+                </span>
+              </h1>
 
               <p className="heroRole">
                 Full-Stack Developer
@@ -342,7 +392,7 @@ function App() {
             </div>
 
             <div className="heroSide">
-              <article className="infoCard compactCard">
+              <article className="infoCard compactCard aboutCard">
                 <p className="cardLabel">About me</p>
                 <p>
                   Final-year Software Development student at MTU with hands-on
@@ -350,18 +400,6 @@ function App() {
                   practical software across frontend, full-stack, mobile and
                   data-focused projects.
                 </p>
-              </article>
-
-              <article className="infoCard compactCard">
-                <p className="cardLabel">Interests</p>
-
-                <div className="pillGrid">
-                  {interests.map((interest) => (
-                    <span className="pill" key={interest}>
-                      {interest}
-                    </span>
-                  ))}
-                </div>
               </article>
             </div>
           </div>
@@ -374,61 +412,164 @@ function App() {
               </div>
             </div>
 
-            <div className="pillGrid skillPills">
-              {skills.map((skill) => (
-                <span className="pill" key={skill}>
-                  {skill}
-                </span>
-              ))}
+            <div className="toolkitGroups">
+              <div className="toolkitGroup">
+                <p className="toolkitGroupLabel">Skills</p>
+
+                <div className="pillGrid skillPills">
+                  {skills.map((skill) => (
+                    <span className="pill" key={skill}>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="toolkitGroup">
+                <p className="toolkitGroupLabel">Interests</p>
+
+                <div className="pillGrid interestPills">
+                  {interests.map((interest) => (
+                    <span className="pill" key={interest}>
+                      {interest}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <section id="projects" className="section alternateSection">
           <div className="sectionInner">
-            <div className="sectionHeading">
+            <div className="sectionHeading projectsHeading">
               <div>
                 <p className="sectionLabel">Projects</p>
                 <h2>Things I&apos;ve built</h2>
               </div>
-
-              <p>
-                A selection of professional, university and personal development
-                work.
-              </p>
             </div>
 
-            <div className="projectsGrid">
-              {projects.map((project) => (
-                <article className="projectCard" key={project.title}>
-                  <div className="projectTop">
-                    <p className="projectCategory">{project.category}</p>
-                    <span className="statusBadge">{project.status}</span>
-                  </div>
+            <div className="projectGroup">
+              <div className="projectGroupHeading">
+                <span className="projectGroupNumber">01</span>
+                <h3>Professional Experience</h3>
+              </div>
 
-                  <h3>{project.title}</h3>
-                  <p className="projectDescription">{project.description}</p>
+              <div className="projectsGrid">
+                {professionalProjects.map((project) => (
+                  <article className="projectCard featuredProjectCard" key={project.title}>
+                    <div className="projectTop">
+                      <p className="projectCategory">{project.category}</p>
+                      <span className="statusBadge">{project.status}</span>
+                    </div>
 
-                  <div className="pillGrid projectTech">
-                    {project.tech.map((tech) => (
-                      <span className="pill smallPill" key={tech}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                    <h3>{project.title}</h3>
+                    <p className="projectDescription">{project.description}</p>
 
-                  {project.github && (
-                    <a
-                      className="textLink"
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      View on GitHub <span aria-hidden="true">↗</span>
-                    </a>
-                  )}
-                </article>
-              ))}
+                    <div className="pillGrid projectTech">
+                      {project.tech.map((tech) => (
+                        <span className="pill smallPill" key={tech}>
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="projectLinks">
+                      {project.liveUrl && (
+                        <a
+                          className="textLink"
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {project.liveLabel ?? "View Live"}{" "}
+                          <span aria-hidden="true">↗</span>
+                        </a>
+                      )}
+
+                      {project.github && (
+                        <a
+                          className="textLink"
+                          href={project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          View on GitHub <span aria-hidden="true">↗</span>
+                        </a>
+                      )}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div className="projectGroup">
+              <div className="projectGroupHeading">
+                <span className="projectGroupNumber">02</span>
+                <h3>In Development</h3>
+              </div>
+
+              <div className="projectsGrid">
+                {developmentProjects.map((project) => (
+                  <article className="projectCard" key={project.title}>
+                    <div className="projectTop">
+                      <p className="projectCategory">{project.category}</p>
+                      <span className="statusBadge">{project.status}</span>
+                    </div>
+
+                    <h3>{project.title}</h3>
+                    <p className="projectDescription">{project.description}</p>
+
+                    <div className="pillGrid projectTech">
+                      {project.tech.map((tech) => (
+                        <span className="pill smallPill" key={tech}>
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div className="projectGroup">
+              <div className="projectGroupHeading">
+                <span className="projectGroupNumber">03</span>
+                <h3>University Projects</h3>
+              </div>
+
+              <div className="projectsGrid">
+                {universityProjects.map((project) => (
+                  <article className="projectCard" key={project.title}>
+                    <div className="projectTop">
+                      <p className="projectCategory">{project.category}</p>
+                      <span className="statusBadge">{project.status}</span>
+                    </div>
+
+                    <h3>{project.title}</h3>
+                    <p className="projectDescription">{project.description}</p>
+
+                    <div className="pillGrid projectTech">
+                      {project.tech.map((tech) => (
+                        <span className="pill smallPill" key={tech}>
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {project.github && (
+                      <a
+                        className="textLink"
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        View on GitHub <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </section>
